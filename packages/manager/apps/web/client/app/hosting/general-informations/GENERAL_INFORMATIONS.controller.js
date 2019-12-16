@@ -242,4 +242,8 @@ export default class HostingGeneralInformationsCtrl {
       this.$scope.hosting.offer,
     );
   }
+
+  goToPrivateSqlActivation() {
+    return this.$state.go('app.hosting.database.private-sql-activation');
+  }
 }
