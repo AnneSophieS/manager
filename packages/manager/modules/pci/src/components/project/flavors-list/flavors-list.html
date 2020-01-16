@@ -82,6 +82,49 @@
                                     >-</span
                                 >
                             </div>
+                            <div data-ng-if="flavor.getGpu()">
+                                <div class="d-flex justify-content-between">
+                                    <span
+                                        data-translate="pci_project_flavors_spec_gpu"
+                                    ></span>
+                                    <span
+                                        class="ml-auto"
+                                        data-ng-bind=":: (flavor.getGpu().number > 1
+                                            ? 'pci_project_flavors_spec_gpu_detail_multi'
+                                            : 'pci_project_flavors_spec_gpu_detail_single') | translate: { number: flavor.getGpu().number }"
+                                    ></span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span
+                                        data-translate="pci_project_flavors_spec_model"
+                                    ></span>
+                                    <span
+                                        class="ml-auto"
+                                        data-ng-bind="flavor.technicalBlob.gpu.model"
+                                    ></span>
+                                </div>
+                            </div>
+                            <div
+                                class="d-flex justify-content-between"
+                                data-ng-if="flavor.getNvme()"
+                            >
+                                <span
+                                    data-translate="pci_project_flavors_spec_nvme"
+                                ></span>
+                                <span>
+                                    <span
+                                        data-ng-if="flavor.getNvme().disks[0].number > 1"
+                                    >
+                                        <span
+                                            data-ng-bind="flavor.getNvme().disks[0].number"
+                                        ></span>
+                                        <span>x</span>
+                                    </span>
+                                    <span
+                                        data-ng-bind="flavor.getNvme().disks[0].capacity | cucBytes:2:false:'GB'"
+                                    ></span>
+                                </span>
+                            </div>
                         </oui-select-picker-section>
                         <oui-select-picker-section>
                             <div class="text-right">
