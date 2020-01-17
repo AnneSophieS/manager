@@ -265,10 +265,15 @@
                     <oui-tile-description>
                         <oui-switch
                             class="mt-2 d-inline-block"
-                            data-disabled="$ctrl.vm.protection.disabled"
-                            data-model="$ctrl.vm.protection.uiSwitch"
+                            data-disabled="$ctrl.vm.protection.isUnavailable"
+                            data-model="$ctrl.vm.protection.enabled"
                             data-on-change="$ctrl.switchTheStateOfProtection()"
                         ></oui-switch>
+                        <span
+                            class="pt-2 pl-1 d-inline-block align-middle"
+                            data-ng-if="$ctrl.vm.protection.isUnavailable"
+                            data-translate="{{ 'domain_dashboard_protection_' + $ctrl.domain.protection }}"
+                        ></span>
                         <button
                             class="btn btn-link ml-3 p-0"
                             type="button"
@@ -307,10 +312,15 @@
                     <oui-tile-description>
                         <oui-switch
                             class="mt-2 d-inline-block"
-                            data-disabled="$ctrl.vm.protection.disabled"
-                            data-model="$ctrl.vm.dnssec.uiSwitch"
+                            data-disabled="$ctrl.vm.dnssec.isUnavailable"
+                            data-model="$ctrl.vm.dnssec.enabled"
                             data-on-change="setAction('dns/sec/domain-dns-sec', $ctrl.domain)"
                         ></oui-switch>
+                        <span
+                            class="pt-2 pl-1 d-inline-block align-middle"
+                            data-ng-if="$ctrl.vm.dnssec.isUnavailable"
+                            data-translate="{{ 'domain_configuration_dnssec_' + $ctrl.domain.dnssecStatus }}"
+                        ></span>
                     </oui-tile-description>
                 </oui-tile-definition>
                 <!-- WHOIS configuration  -->
